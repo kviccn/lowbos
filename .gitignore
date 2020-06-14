@@ -50,3 +50,10 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+# extras
+*.img
+*.asm
+kernel
+bootblock
+sign
