@@ -51,9 +51,14 @@ Module.symvers
 Mkfile.old
 dkms.conf
 
+# vscode
+.vscode/
+
 # extras
 *.img
 *.asm
 kernel
 bootblock
 sign
+vectors
+vectors.S
