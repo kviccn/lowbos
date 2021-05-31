@@ -7,7 +7,6 @@
 // 中断描述符表
 struct gatedesc idt[256];
 extern uint32_t vectors[]; // 中断处理程序入口地址构成的数组 (在 vectors.S 中)
-uint32_t ticks;
 
 void tvinit(void)
 {
@@ -22,7 +21,7 @@ void idtinit(void)
 
 void trap(struct trapframe *tf)
 {
-  // cprintf("trapno: %d, eip: %x, err: %d\n", tf->trapno, tf->eip, tf->err);
+  cprintf("trapno: %d, eip: %x, err: %d\n", tf->trapno, tf->eip, tf->err);
 
   switch (tf->trapno)
   {
@@ -30,7 +29,6 @@ void trap(struct trapframe *tf)
   //   eoi(tf->trapno);
   //   break;
   case T_IRQ0 + IRQ_TIMER:
-    cprintf("tick: %d\n", ticks++);
     eoi(tf->trapno);
     break;
   }
